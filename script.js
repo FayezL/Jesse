@@ -64,20 +64,96 @@ document.addEventListener("DOMContentLoaded", initializeApp);
  * Initialize the application
  */
 function initializeApp() {
+  console.log("🍕 Initializing app...");
+
+  // Check if all DOM elements exist
+  checkDOMElements();
+
   setupEventListeners();
   setDailyMessage();
   setupMusicControl();
   addCuteAnimations();
+
+  console.log("✅ App initialized successfully!");
 }
 
 /**
- * Set up all event listeners
+ * Check if all required DOM elements exist
+ */
+function checkDOMElements() {
+  const elements = {
+    pizza: pizza,
+    musicToggle: musicToggle,
+    closeMusicPlayer: closeMusicPlayer,
+    newQuoteBtn: newQuoteBtn,
+    musicPlayer: musicPlayer,
+  };
+
+  for (const [name, element] of Object.entries(elements)) {
+    if (!element) {
+      console.error(`❌ Missing element: ${name}`);
+    } else {
+      console.log(`✅ Found element: ${name}`);
+    }
+  }
+}
+
+/**
+ * Set up all event listeners with mobile support
  */
 function setupEventListeners() {
-  pizza.addEventListener("click", handlePizzaClick);
-  musicToggle.addEventListener("click", openMusicPlayer);
-  closeMusicPlayer.addEventListener("click", closeMusicPlayerModal);
-  newQuoteBtn.addEventListener("click", showNewQuote);
+  // Mobile-friendly event listeners
+  addMobileClickSupport(pizza, handlePizzaClick);
+  addMobileClickSupport(musicToggle, openMusicPlayer);
+  addMobileClickSupport(closeMusicPlayer, closeMusicPlayerModal);
+  addMobileClickSupport(newQuoteBtn, showNewQuote);
+}
+
+/**
+ * Add mobile-friendly click support (handles both touch and click)
+ */
+function addMobileClickSupport(element, handler) {
+  if (element) {
+    console.log(
+      `🎯 Adding event listeners to: ${element.id || element.className}`
+    );
+
+    // Add visual feedback for touch
+    element.addEventListener("touchstart", (e) => {
+      element.style.opacity = "0.7";
+      element.style.transform = "scale(0.95)";
+    });
+
+    element.addEventListener("touchend", (e) => {
+      e.preventDefault(); // Prevent double-firing
+
+      // Reset visual feedback
+      element.style.opacity = "";
+      element.style.transform = "";
+
+      console.log(
+        `👆 Touch event fired on: ${element.id || element.className}`
+      );
+      handler(e);
+    });
+
+    // Also keep click for desktop
+    element.addEventListener("click", (e) => {
+      console.log(
+        `🖱️ Click event fired on: ${element.id || element.className}`
+      );
+      handler(e);
+    });
+
+    // Make sure element is focusable for accessibility
+    if (!element.hasAttribute("tabindex")) {
+      element.setAttribute("tabindex", "0");
+    }
+
+    // Add CSS for better touch targets
+    element.style.cursor = "pointer";
+    element.style.userSelect = "none";
+  }
 }
 
 /**
