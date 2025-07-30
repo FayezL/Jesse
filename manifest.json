@@ -1,0 +1,28 @@
+{
+  "name": "💕 For Yassmen Jesse",
+  "short_name": "💕 For Yassmen",
+  "description": "A sweet love message from Fayez to Yassmen Jesse",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ff9a9e",
+  "theme_color": "#ff69b4",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><circle cx='96' cy='96' r='94' fill='%23ff69b4'/><text x='96' y='120' font-size='80' text-anchor='middle'>🍕</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><circle cx='256' cy='256' r='254' fill='%23ff69b4'/><text x='256' y='320' font-size='200' text-anchor='middle'>🍕</text></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["lifestyle", "entertainment"],
+  "lang": "en",
+  "scope": "/",
+  "id": "yassmen-love-app"
+} 
