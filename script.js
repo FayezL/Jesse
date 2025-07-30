@@ -219,18 +219,92 @@ function setupMusicControl() {
 }
 
 /**
- * Open music player in new window/tab (much better for mobile!)
+ * Show music player by replacing main content (single page, no overlay!)
  */
 function openMusicPlayer() {
-  // Open the dedicated music page in a new tab/window
-  window.open(
-    "music.html",
-    "_blank",
-    "width=800,height=600,scrollbars=yes,resizable=yes"
-  );
+  // Hide main content and show music content
+  const mainContent = document.querySelector(".main-content");
+  const container = document.querySelector(".container");
+
+  if (mainContent && container) {
+    mainContent.style.display = "none";
+
+    // Create music content directly in the page
+    const musicContent = createMusicContent();
+    container.appendChild(musicContent);
+  }
 }
 
-// Quote functionality moved to music.html page!
+/**
+ * Create music content that replaces main content
+ */
+function createMusicContent() {
+  const musicDiv = document.createElement("div");
+  musicDiv.id = "musicContent";
+  musicDiv.className = "music-content";
+
+  musicDiv.innerHTML = `
+    <div class="music-header">
+      <button class="back-btn" onclick="closeMusicPlayer()">← Back</button>
+      <h2>🎵 Fayez's Heart Songs for Yassmen 🎵</h2>
+      <p class="playlist-dedication">"I googled 'how to embed Spotify' for you! 💕"</p>
+    </div>
+    
+    <div class="spotify-section">
+      <h3>🎧 Our Love Playlist 🎧</h3>
+      <iframe class="spotify-player"
+        src="https://open.spotify.com/embed/playlist/4EglqFy0j4G3CoidPAFBzr?utm_source=generator&theme=0"
+        width="100%" height="380" frameBorder="0" allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
+      </iframe>
+      <p class="cute-note">👆 If this doesn't work, I'll just sing to you instead! 😅</p>
+    </div>
+    
+    <div class="quote-section">
+      <div class="quote-bubble">
+        <p class="cute-quote" id="musicPageQuote">💕 "You are my today and all of my tomorrows" 💕</p>
+      </div>
+      <button class="new-quote-btn" onclick="showMusicQuote()">✨ New Quote ✨</button>
+    </div>
+    
+    <div class="romantic-message">
+      <p>💕 "Yassmen, لسه معرفش بتحبي اغاني ايه بس حاولت انقي احسن اغاني . You're my favorite song on repeat."</p>
+      <small>- Forever yours, Fayez (who definitely didn't panic while coding this) 💕</small>
+    </div>
+  `;
+
+  return musicDiv;
+}
+
+/**
+ * Close music player and go back to main content
+ */
+function closeMusicPlayer() {
+  const mainContent = document.querySelector(".main-content");
+  const musicContent = document.getElementById("musicContent");
+
+  if (mainContent && musicContent) {
+    mainContent.style.display = "block";
+    musicContent.remove();
+  }
+}
+
+/**
+ * Show new quote in music page
+ */
+function showMusicQuote() {
+  const randomIndex = Math.floor(Math.random() * cuteQuotes.length);
+  const newQuote = cuteQuotes[randomIndex];
+  const quoteElement = document.getElementById("musicPageQuote");
+
+  if (quoteElement) {
+    quoteElement.style.opacity = "0";
+    setTimeout(() => {
+      quoteElement.textContent = newQuote;
+      quoteElement.style.opacity = "1";
+    }, 200);
+  }
+}
 
 // Music player modal removed - now opens in new tab!
 
