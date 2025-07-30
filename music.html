@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎵 Our Love Playlist - Fayez & Yassmen 💕</title>
+  <meta name="theme-color" content="#ff69b4">
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎵</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header {
+      text-align: center;
+      padding: 2rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      margin-bottom: 2rem;
+    }
+
+    .title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(45deg, #ff69b4, #ffd700);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      font-style: italic;
+    }
+
+    .spotify-section {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 1rem;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .playlist-title {
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #ff69b4;
+    }
+
+    .spotify-player {
+      width: 100%;
+      height: 400px;
+      border-radius: 12px;
+      border: none;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .quote-section {
+      background: rgba(255, 105, 180, 0.2);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      text-align: center;
+      border: 2px solid rgba(255, 105, 180, 0.3);
+    }
+
+    .cute-quote {
+      font-size: 1.1rem;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+
+    .new-quote-btn {
+      background: linear-gradient(135deg, #ff69b4, #ff1493);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    .new-quote-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+    }
+
+    .romantic-message {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      border: 2px solid rgba(255, 105, 180, 0.2);
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .back-button {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(255, 105, 180, 0.9);
+      color: white;
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 1000;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .back-button:hover {
+      transform: scale(1.1);
+    }
+
+    .floating-hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 2rem;
+      opacity: 0.3;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .heart:nth-child(1) {
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .heart:nth-child(2) {
+      left: 20%;
+      animation-delay: 1s;
+    }
+
+    .heart:nth-child(3) {
+      left: 30%;
+      animation-delay: 2s;
+    }
+
+    .heart:nth-child(4) {
+      left: 80%;
+      animation-delay: 3s;
+    }
+
+    .heart:nth-child(5) {
+      left: 90%;
+      animation-delay: 4s;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+
+      10%,
+      90% {
+        opacity: 0.3;
+      }
+
+      50% {
+        transform: translateY(0vh) rotate(180deg);
+        opacity: 0.3;
+      }
+    }
+
+    /* Mobile optimizations */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0.5rem;
+      }
+
+      .header {
+        padding: 1rem 0;
+      }
+
+      .title {
+        font-size: 1.5rem;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+      }
+
+      .spotify-section {
+        padding: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .spotify-player {
+        height: 380px;
+      }
+
+      .quote-section,
+      .romantic-message {
+        padding: 1rem;
+        margin: 0.5rem 0;
+      }
+
+      .cute-quote {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .title {
+        font-size: 1.3rem;
+      }
+
+      .spotify-player {
+        height: 350px;
+      }
+
+      .cute-quote {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="floating-hearts">
+    <div class="heart">💕</div>
+    <div class="heart">💖</div>
+    <div class="heart">💝</div>
+    <div class="heart">❤️</div>
+    <div class="heart">💗</div>
+  </div>
+
+  <button class="back-button" onclick="window.close()" title="Close">✕</button>
+
+  <div class="container">
+    <header class="header">
+      <h1 class="title">🎵 Fayez's Heart Songs for Yassmen 🎵</h1>
+      <p class="subtitle">"I googled 'how to embed Spotify' for you! 💕"</p>
+    </header>
+
+    <section class="spotify-section">
+      <h2 class="playlist-title">🎧 Our Love Playlist 🎧</h2>
+      <iframe class="spotify-player"
+        src="https://open.spotify.com/embed/playlist/4EglqFy0j4G3CoidPAFBzr?utm_source=generator&theme=0"
+        frameBorder="0" allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
+      </iframe>
+      <p style="text-align: center; margin-top: 1rem; font-style: italic; opacity: 0.8;">
+        👆 If this doesn't work, I'll just sing to you instead! 😅
+      </p>
+    </section>
+
+    <section class="quote-section">
+      <p class="cute-quote" id="randomQuote">💕 "You are my today and all of my tomorrows" 💕</p>
+      <button class="new-quote-btn" onclick="showNewQuote()">✨ New Quote ✨</button>
+    </section>
+
+    <section class="romantic-message">
+      <p>💕 "Yassmen, لسه معرفش بتحبي اغاني ايه بس حاولت انقي احسن اغاني . You're my favorite song on repeat."</p>
+      <small>- Forever yours, Fayez (who definitely didn't panic while coding this) 💕</small>
+    </section>
+  </div>
+
+  <script>
+    // Cute quotes array
+    const cuteQuotes = [
+      '💕 "You are my today and all of my tomorrows" 💕',
+      '✨ "In your smile, I see something more beautiful than stars" ✨',
+      '🌙 "You\'re the reason I believe in love at first sight" 🌙',
+      '💖 "Every love song makes sense when I think of you" 💖',
+      '🌸 "You\'re my favorite notification" 🌸',
+      '💕 "I fall for you every single day" 💕',
+      '⭐ "You\'re my happy place in this chaotic world" ⭐',
+      '💝 "Distance means nothing when someone means everything" 💝',
+      '🎵 "You\'re the melody my heart beats to" 🎵',
+      '💖 "حبك في قلبي زي الشمس في السما" 💖',
+    ];
+
+    function showNewQuote() {
+      const randomIndex = Math.floor(Math.random() * cuteQuotes.length);
+      const newQuote = cuteQuotes[randomIndex];
+      const quoteElement = document.getElementById('randomQuote');
+
+      quoteElement.style.opacity = '0';
+      setTimeout(() => {
+        quoteElement.textContent = newQuote;
+        quoteElement.style.opacity = '1';
+      }, 200);
+    }
+  </script>
+</body>
+
+</html>

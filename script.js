@@ -52,10 +52,6 @@ const messageText = document.getElementById("messageText");
 const messageBubble = document.getElementById("messageBubble");
 const musicToggle = document.getElementById("musicToggle");
 const musicStatus = document.getElementById("musicStatus");
-const musicPlayer = document.getElementById("musicPlayer");
-const closeMusicPlayer = document.getElementById("closeMusicPlayer");
-const randomQuote = document.getElementById("randomQuote");
-const newQuoteBtn = document.getElementById("newQuoteBtn");
 
 // Initialize app when DOM is loaded
 document.addEventListener("DOMContentLoaded", initializeApp);
@@ -76,9 +72,6 @@ function initializeApp() {
 function setupEventListeners() {
   if (pizza) pizza.addEventListener("click", handlePizzaClick);
   if (musicToggle) musicToggle.addEventListener("click", openMusicPlayer);
-  if (closeMusicPlayer)
-    closeMusicPlayer.addEventListener("click", closeMusicPlayerModal);
-  if (newQuoteBtn) newQuoteBtn.addEventListener("click", showNewQuote);
 }
 
 /**
@@ -226,44 +219,20 @@ function setupMusicControl() {
 }
 
 /**
- * Open music player modal
+ * Open music player in new window/tab (much better for mobile!)
  */
 function openMusicPlayer() {
-  musicPlayer.classList.remove("hidden");
-  document.body.style.overflow = "hidden";
+  // Open the dedicated music page in a new tab/window
+  window.open(
+    "music.html",
+    "_blank",
+    "width=800,height=600,scrollbars=yes,resizable=yes"
+  );
 }
 
-/**
- * Show a new random cute quote
- */
-function showNewQuote() {
-  const randomIndex = Math.floor(Math.random() * cuteQuotes.length);
-  const newQuote = cuteQuotes[randomIndex];
+// Quote functionality moved to music.html page!
 
-  // Add a cute animation when changing quotes
-  randomQuote.style.opacity = "0";
-  setTimeout(() => {
-    randomQuote.textContent = newQuote;
-    randomQuote.style.opacity = "1";
-  }, 200);
-
-  // Add sparkle effect to the button
-  newQuoteBtn.style.transform = "scale(0.95)";
-  setTimeout(() => {
-    newQuoteBtn.style.transform = "scale(1)";
-  }, 150);
-}
-
-/**
- * Close music player modal (updated for Spotify)
- */
-function closeMusicPlayerModal() {
-  musicPlayer.classList.add("hidden");
-  document.body.style.overflow = "auto";
-
-  // Note: Spotify iframes handle their own playback
-  // No need to manually stop like with YouTube
-}
+// Music player modal removed - now opens in new tab!
 
 /**
  * Add cute animations throughout the app
