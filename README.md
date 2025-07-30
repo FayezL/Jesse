@@ -1,6 +1,6 @@
 # 🐔💕 Clucky Says I Love You
 
-A cute web app from Fayez to Yassmen Jesse - featuring an adorable chicken that delivers sweet daily messages!
+A cute web app to Yassmen Jesse - featuring an adorable chicken that delivers sweet daily messages!
 
 ## ✨ Features
 
@@ -42,4 +42,3 @@ When Yassmen opens the app:
 
 ---
 
-Made with ❤️ by Fayez for Yassmen Jesse
