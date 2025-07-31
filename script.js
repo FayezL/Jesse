@@ -986,14 +986,13 @@ newAnimationStyles.textContent = `
     font-style: italic;
   }
   
-  .memory-content {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 1rem;
-    color: white;
-    direction: rtl;
-  }
+     .memory-content {
+     width: 100%;
+     max-width: 800px;
+     margin: 0 auto;
+     padding: 1rem;
+     color: #2d3748;
+   }
   
   .memory-header {
     text-align: center;
@@ -1010,12 +1009,12 @@ newAnimationStyles.textContent = `
     color: #ff69b4;
   }
   
-  .memory-dedication {
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.8);
-    font-style: italic;
-    margin: 0;
-  }
+     .memory-dedication {
+     font-size: 1rem;
+     color: #4a5568;
+     font-style: italic;
+     margin: 0;
+   }
   
   .memory-grid {
     display: grid;
@@ -1024,16 +1023,17 @@ newAnimationStyles.textContent = `
     margin: 2rem 0;
   }
   
-  .memory-card {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 1rem;
-    padding: 1.5rem;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: 2px solid rgba(255, 105, 180, 0.3);
-    backdrop-filter: blur(10px);
-  }
+     .memory-card {
+     background: rgba(255, 255, 255, 0.95);
+     border-radius: 1rem;
+     padding: 1.5rem;
+     text-align: center;
+     cursor: pointer;
+     transition: all 0.3s ease;
+     border: 2px solid rgba(255, 105, 180, 0.3);
+     backdrop-filter: blur(10px);
+     box-shadow: 0 8px 20px rgba(255, 105, 180, 0.1);
+   }
   
   .memory-card:hover {
     transform: translateY(-5px);
@@ -1052,11 +1052,11 @@ newAnimationStyles.textContent = `
     font-size: 1.1rem;
   }
   
-  .memory-card p {
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 0.9rem;
-    line-height: 1.4;
-  }
+     .memory-card p {
+     color: #4a5568;
+     font-size: 0.9rem;
+     line-height: 1.4;
+   }
   
   .memory-game-section {
     background: rgba(255, 105, 180, 0.2);
@@ -1116,7 +1116,7 @@ newAnimationStyles.textContent = `
      max-width: 800px;
      margin: 0 auto;
      padding: 1rem;
-     color: white;
+     color: #2d3748;
    }
    
    .family-header {
@@ -1136,7 +1136,7 @@ newAnimationStyles.textContent = `
    
    .family-dedication {
      font-size: 1rem;
-     color: rgba(255, 255, 255, 0.8);
+     color: #4a5568;
      font-style: italic;
      margin: 0;
    }
@@ -1149,7 +1149,7 @@ newAnimationStyles.textContent = `
    }
    
    .family-card {
-     background: linear-gradient(135deg, rgba(255, 105, 180, 0.2), rgba(255, 182, 193, 0.2));
+     background: rgba(255, 255, 255, 0.95);
      border-radius: 1.5rem;
      padding: 2rem;
      text-align: center;
@@ -1159,6 +1159,7 @@ newAnimationStyles.textContent = `
      backdrop-filter: blur(10px);
      position: relative;
      overflow: hidden;
+     box-shadow: 0 8px 25px rgba(255, 105, 180, 0.15);
    }
    
    .family-card:hover {
@@ -1197,7 +1198,7 @@ newAnimationStyles.textContent = `
    }
    
    .family-card p {
-     color: rgba(255, 255, 255, 0.9);
+     color: #4a5568;
      font-size: 1rem;
      line-height: 1.4;
      margin-bottom: 1rem;
@@ -1209,12 +1210,13 @@ newAnimationStyles.textContent = `
    }
    
    .family-message-section {
-     background: rgba(255, 105, 180, 0.15);
+     background: rgba(255, 255, 255, 0.9);
      border-radius: 1rem;
      padding: 2rem;
      margin: 2rem 0;
      text-align: center;
      border: 2px solid rgba(255, 105, 180, 0.2);
+     box-shadow: 0 8px 20px rgba(255, 105, 180, 0.1);
    }
    
    .family-bubble {
@@ -1254,12 +1256,13 @@ newAnimationStyles.textContent = `
    }
    
    .mom-appreciation {
-     background: linear-gradient(135deg, rgba(255, 182, 193, 0.2), rgba(255, 105, 180, 0.2));
+     background: rgba(255, 255, 255, 0.9);
      border-radius: 1rem;
      padding: 2rem;
      margin: 2rem 0;
      text-align: center;
      border: 2px solid rgba(255, 182, 193, 0.3);
+     box-shadow: 0 8px 20px rgba(255, 105, 180, 0.1);
    }
    
    .mom-appreciation h3 {
