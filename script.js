@@ -61,6 +61,33 @@ const memoryPhotos = [
   },
 ];
 
+// Special family love messages
+const familyLoveMessages = [
+  "Yassmen, I don't just love you - I love your beautiful family too! 💕 Your mom raised an angel (ربنا يخليها ليكِ)",
+  "Your mom must be amazing because she raised the most incredible woman! (أمك أكيد ست جميلة زيك) 👑💖",
+  "I love how much you love your mom - it shows what a beautiful heart you have (قلبك طيب زي أمك) 💕",
+  "Can't wait to meet your mom and thank her for bringing you into this world! (عايز أقولها شكراً إنها جابتك للدنيا) 🌟",
+  "Family is everything, and I love that about you! Your mom raised a queen (ملكة) 👸💕",
+  "I see where you get your beauty from - inside and out! (الجمال منين... من أمك أكيد) ✨💖",
+];
+
+// Mom appreciation quotes
+const momAppreciationQuotes = [
+  "🌹 'A mother's love is the heart of the family' - And your mom created the most beautiful heart 🌹",
+  "💝 'Behind every great woman is a great mother' - Your mom did an amazing job! 💝",
+  "🌸 'Mothers hold their children's hands for a while, their hearts forever' (أمك في قلبك دايماً) 🌸",
+  "👑 'The influence of a mother upon the lives of her children is beyond calculation' - Thank you, Mama! 👑",
+  "💕 'A mother's arms are more comforting than anyone else's' (حضن الأم أحن من كل حاجة) 💕",
+];
+
+// Add family love photo to memories
+memoryPhotos.push({
+  title: "👨‍👩‍👧 Our Beautiful Family Future",
+  description:
+    "When I meet your mom and we become one big happy family! (عيلة واحدة حلوة)",
+  emoji: "👩‍❤️‍👨",
+});
+
 // Date functions for countdown
 function getDaysSinceDate(startDate) {
   const now = new Date();
@@ -757,6 +784,158 @@ function showGameMessage(message) {
   }, 2000);
 }
 
+/**
+ * Show family love section
+ */
+function showFamilyLove() {
+  const mainContent = document.querySelector(".main-content");
+  const container = document.querySelector(".container");
+
+  if (mainContent && container) {
+    mainContent.style.display = "none";
+
+    const familyContent = createFamilyContent();
+    container.appendChild(familyContent);
+  }
+}
+
+/**
+ * Create family love content
+ */
+function createFamilyContent() {
+  const familyDiv = document.createElement("div");
+  familyDiv.id = "familyContent";
+  familyDiv.className = "family-content";
+
+  familyDiv.innerHTML = `
+    <div class="family-header">
+      <button class="back-btn" onclick="closeFamilySection()">← Back</button>
+      <h2>👪 Family Love 👪</h2>
+      <p class="family-dedication">"I love Yassmen AND her amazing mom! (بحب ياسمين وأمها الجميلة) 💕"</p>
+    </div>
+    
+         <div class="family-cards">
+       <div class="family-card yassmen-card" onclick="showFamilyMemberMessage('yassmen')">
+         <div class="card-emoji">👸</div>
+         <h3>My Beautiful Yassmen</h3>
+         <p>The love of my life (حبيبة عمري) 💕</p>
+         <div class="love-hearts">❤️💖💕</div>
+       </div>
+       
+       <div class="family-card mom-card" onclick="showFamilyMemberMessage('mom')">
+         <div class="card-emoji">👩</div>
+         <h3>Yassmen's Amazing Mom</h3>
+         <p>The woman who raised my queen (اللي ربت ملكتي) 🌟</p>
+         <div class="love-hearts">🌹💐🤗</div>
+       </div>
+     </div>
+    
+    <div class="family-message-section">
+      <div class="family-bubble" id="familyBubble">
+        <p class="family-text" id="familyText">Click the cards above to see special messages! 💕</p>
+      </div>
+      <button class="family-btn" onclick="showRandomFamilyMessage()">💝 Sweet Family Message</button>
+    </div>
+    
+    <div class="mom-appreciation">
+      <h3>🌹 Thank You, Mama! 🌹</h3>
+      <div class="appreciation-quote" id="appreciationQuote">
+        "Thank you for raising the most amazing daughter! (شكراً إنك ربيتي أحلى بنت) 💖"
+      </div>
+      <button class="quote-btn" onclick="showMomQuote()">New Quote for Mama ✨</button>
+    </div>
+    
+
+  `;
+
+  return familyDiv;
+}
+
+/**
+ * Close family section
+ */
+function closeFamilySection() {
+  const mainContent = document.querySelector(".main-content");
+  const familyContent = document.getElementById("familyContent");
+
+  if (mainContent && familyContent) {
+    mainContent.style.display = "block";
+    familyContent.remove();
+  }
+}
+
+/**
+ * Show random family message
+ */
+function showRandomFamilyMessage() {
+  const randomIndex = Math.floor(Math.random() * familyLoveMessages.length);
+  const message = familyLoveMessages[randomIndex];
+  const familyText = document.getElementById("familyText");
+
+  if (familyText) {
+    familyText.style.opacity = "0";
+    setTimeout(() => {
+      familyText.textContent = message;
+      familyText.style.opacity = "1";
+    }, 200);
+  }
+}
+
+/**
+ * Show mom appreciation quote
+ */
+function showMomQuote() {
+  const randomIndex = Math.floor(Math.random() * momAppreciationQuotes.length);
+  const quote = momAppreciationQuotes[randomIndex];
+  const quoteElement = document.getElementById("appreciationQuote");
+
+  if (quoteElement) {
+    quoteElement.style.opacity = "0";
+    setTimeout(() => {
+      quoteElement.textContent = quote;
+      quoteElement.style.opacity = "1";
+    }, 200);
+  }
+}
+
+/**
+ * Show specific family member message
+ */
+function showFamilyMemberMessage(member) {
+  const messages = {
+    yassmen: [
+      "Yassmen, you're not just my girlfriend - you're my whole future! (مستقبلي كله) 💕",
+      "Every day with you feels like a blessing (كل يوم معاكِ نعمة) ✨",
+      "You make me want to be the best man for you and your family (عشانك وعشان أمك) 💪",
+    ],
+    mom: [
+      "Thank you for raising such an incredible daughter! (شكراً إنك ربيتي بنت مميزة) 🌹",
+      "I promise to take good care of your daughter's heart (هحافظ على قلب بنتك) 💝",
+      "I can see where Yassmen gets her beauty and kindness from! (عارف منين ياسمين جابت الجمال ده) ✨",
+    ],
+  };
+
+  const memberMessages = messages[member];
+  const randomMessage =
+    memberMessages[Math.floor(Math.random() * memberMessages.length)];
+  const familyText = document.getElementById("familyText");
+
+  if (familyText) {
+    familyText.style.opacity = "0";
+    setTimeout(() => {
+      familyText.textContent = randomMessage;
+      familyText.style.opacity = "1";
+    }, 200);
+  }
+}
+
+// Add family love messages to the regular rotation occasionally
+const originalMessages = [...loveMessages];
+loveMessages.push(
+  "Your family is going to be my family too! I love that about us (عيلتك هتبقى عيلتي) 💕",
+  "I love how much you respect and love your mom - it makes me love you even more (بحبك أكتر عشان كده) 👑"
+);
+
 // Add CSS animations for the new features
 const newAnimationStyles = document.createElement("style");
 newAnimationStyles.textContent = `
@@ -927,49 +1106,254 @@ newAnimationStyles.textContent = `
     animation: fallDown 3s linear forwards;
   }
   
-  .game-message {
-    font-family: 'Quicksand', sans-serif;
-  }
-  
-  @media (max-width: 768px) {
-    .memory-grid {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-    }
-    
-    .memory-card {
-      padding: 1rem;
-    }
-    
-    .memory-emoji {
-      font-size: 2.5rem;
-    }
-    
-    .memory-game-section {
-      padding: 1.5rem;
-    }
-    
-    .game-btn {
-      padding: 0.8rem 1.5rem;
-      font-size: 1rem;
-    }
-  }
+     .game-message {
+     font-family: 'Quicksand', sans-serif;
+   }
+   
+   /* Family Love Section Styles */
+   .family-content {
+     width: 100%;
+     max-width: 800px;
+     margin: 0 auto;
+     padding: 1rem;
+     color: white;
+   }
+   
+   .family-header {
+     text-align: center;
+     padding: 1rem 0 2rem 0;
+     position: relative;
+     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+     margin-bottom: 2rem;
+   }
+   
+   .family-header h2 {
+     font-size: 1.8rem;
+     font-weight: 700;
+     margin: 0 0 0.5rem 0;
+     color: #ff69b4;
+   }
+   
+   .family-dedication {
+     font-size: 1rem;
+     color: rgba(255, 255, 255, 0.8);
+     font-style: italic;
+     margin: 0;
+   }
+   
+   .family-cards {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+     gap: 2rem;
+     margin: 2rem 0;
+   }
+   
+   .family-card {
+     background: linear-gradient(135deg, rgba(255, 105, 180, 0.2), rgba(255, 182, 193, 0.2));
+     border-radius: 1.5rem;
+     padding: 2rem;
+     text-align: center;
+     cursor: pointer;
+     transition: all 0.3s ease;
+     border: 2px solid rgba(255, 105, 180, 0.3);
+     backdrop-filter: blur(10px);
+     position: relative;
+     overflow: hidden;
+   }
+   
+   .family-card:hover {
+     transform: translateY(-8px);
+     background: linear-gradient(135deg, rgba(255, 105, 180, 0.3), rgba(255, 182, 193, 0.3));
+     border-color: #ff69b4;
+     box-shadow: 0 15px 40px rgba(255, 105, 180, 0.4);
+   }
+   
+   .family-card::before {
+     content: '';
+     position: absolute;
+     top: 0;
+     left: -100%;
+     width: 100%;
+     height: 100%;
+     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+     transition: left 0.5s ease;
+   }
+   
+   .family-card:hover::before {
+     left: 100%;
+   }
+   
+   .card-emoji {
+     font-size: 4rem;
+     margin-bottom: 1rem;
+     animation: pulse 2s ease-in-out infinite;
+   }
+   
+   .family-card h3 {
+     color: #ff69b4;
+     margin-bottom: 0.5rem;
+     font-size: 1.3rem;
+     font-weight: 600;
+   }
+   
+   .family-card p {
+     color: rgba(255, 255, 255, 0.9);
+     font-size: 1rem;
+     line-height: 1.4;
+     margin-bottom: 1rem;
+   }
+   
+   .love-hearts {
+     font-size: 1.5rem;
+     animation: sparkle 3s ease-in-out infinite;
+   }
+   
+   .family-message-section {
+     background: rgba(255, 105, 180, 0.15);
+     border-radius: 1rem;
+     padding: 2rem;
+     margin: 2rem 0;
+     text-align: center;
+     border: 2px solid rgba(255, 105, 180, 0.2);
+   }
+   
+   .family-bubble {
+     background: rgba(255, 255, 255, 0.9);
+     border-radius: 1.5rem;
+     padding: 1.5rem;
+     margin-bottom: 1.5rem;
+     box-shadow: 0 8px 20px rgba(255, 105, 180, 0.2);
+   }
+   
+   .family-text {
+     color: #495057;
+     font-size: 1.1rem;
+     font-weight: 600;
+     line-height: 1.5;
+     margin: 0;
+     transition: opacity 0.3s ease;
+   }
+   
+   .family-btn, .quote-btn {
+     background: linear-gradient(45deg, #ff69b4, #ff1493);
+     color: white;
+     border: none;
+     padding: 1rem 2rem;
+     border-radius: 2rem;
+     font-size: 1rem;
+     font-weight: 600;
+     cursor: pointer;
+     margin: 0.5rem;
+     transition: all 0.3s ease;
+     box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+   }
+   
+   .family-btn:hover, .quote-btn:hover {
+     transform: translateY(-2px);
+     box-shadow: 0 8px 25px rgba(255, 105, 180, 0.4);
+   }
+   
+   .mom-appreciation {
+     background: linear-gradient(135deg, rgba(255, 182, 193, 0.2), rgba(255, 105, 180, 0.2));
+     border-radius: 1rem;
+     padding: 2rem;
+     margin: 2rem 0;
+     text-align: center;
+     border: 2px solid rgba(255, 182, 193, 0.3);
+   }
+   
+   .mom-appreciation h3 {
+     color: #ff69b4;
+     margin-bottom: 1rem;
+     font-size: 1.4rem;
+   }
+   
+   .appreciation-quote {
+     background: rgba(255, 255, 255, 0.9);
+     border-radius: 1rem;
+     padding: 1.5rem;
+     margin: 1rem 0;
+     color: #495057;
+     font-size: 1.1rem;
+     font-weight: 600;
+     line-height: 1.5;
+     transition: opacity 0.3s ease;
+     box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2);
+   }
+   
+
+   
+   @media (max-width: 768px) {
+     .memory-grid {
+       grid-template-columns: 1fr;
+       gap: 1rem;
+     }
+     
+     .memory-card {
+       padding: 1rem;
+     }
+     
+     .memory-emoji {
+       font-size: 2.5rem;
+     }
+     
+     .memory-game-section {
+       padding: 1.5rem;
+     }
+     
+     .game-btn {
+       padding: 0.8rem 1.5rem;
+       font-size: 1rem;
+     }
+     
+     .family-cards {
+       grid-template-columns: 1fr;
+       gap: 1rem;
+     }
+     
+     .family-card {
+       padding: 1.5rem;
+     }
+     
+     .card-emoji {
+       font-size: 3rem;
+     }
+     
+     .family-message-section, .mom-appreciation {
+       padding: 1.5rem;
+       margin: 1rem 0;
+     }
+     
+     .family-btn, .quote-btn {
+       padding: 0.8rem 1.5rem;
+       font-size: 0.9rem;
+     }
+   }
 `;
 document.head.appendChild(newAnimationStyles);
 
-// Add photo memories button to footer
+// Add photo memories and family love buttons to footer
 document.addEventListener("DOMContentLoaded", () => {
   const footer = document.querySelector(".footer");
   if (footer) {
+    // Add memory button
     const memoryBtn = document.createElement("button");
     memoryBtn.className = "music-toggle";
     memoryBtn.style.marginTop = "0.5rem";
     memoryBtn.innerHTML = "📸 Our Sweet Memories";
     memoryBtn.onclick = showPhotoMemories;
 
+    // Add family button
+    const familyBtn = document.createElement("button");
+    familyBtn.className = "music-toggle";
+    familyBtn.style.marginTop = "0.5rem";
+    familyBtn.innerHTML = "👪 Family Love";
+    familyBtn.onclick = showFamilyLove;
+
     const musicToggle = footer.querySelector(".music-toggle");
     if (musicToggle) {
       footer.insertBefore(memoryBtn, musicToggle.nextSibling);
+      footer.insertBefore(familyBtn, musicToggle.nextSibling);
     }
   }
 });
