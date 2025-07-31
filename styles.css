@@ -5,12 +5,22 @@
     box-sizing: border-box;
 }
 
+/* Enhanced font rendering for mixed languages */
 body {
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Quicksand', 'Cairo', 'Noto Sans Arabic', sans-serif;
     background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* Improve text spacing and readability for mixed content */
+.title, .subtitle, .message-text, .evidence-text, .analysis-subtitle {
+    line-height: 1.6;
+    word-spacing: 0.1em;
 }
 
 /* Container and layout */
